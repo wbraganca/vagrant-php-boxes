@@ -1,0 +1,44 @@
+---
+provider: virtualbox
+box: 'ubuntu/xenial64'
+
+machine_ip: "192.168.10.70"
+machine_memory: 1024
+machine_cpus: 1
+machine_name: 'vmphp70'
+machine_hostname: 'vagrant'
+
+# Guest OS timezone
+timezone: "Europe/London"
+
+box_check_update: false
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+  - ~/.ssh/id_rsa
+
+folders:
+  - map: "C:/www"
+    to: "/var/www"
+
+sites:
+#  - map: dev-example
+#    to: /var/www/dev-example/public
+#  - map: dev-example2
+#    to: /var/www/dev-example2/public
+
+ports:
+  - send: 3000
+    to: 3000
+
+databases:
+#  - db_name1
+#  - db_name2
+
+users:
+  - username: 'vagrant'
+    fullname: 'vagrant'
+    email: 'email@address.com'
+    password: 'vagrant'
+    github_token: <your-personal-github-token>

@@ -1,0 +1,43 @@
+---
+provider: virtualbox
+box: 'ubuntu/trusty64'
+
+machine_ip: "192.168.10.53"
+machine_memory: 1024
+machine_cpus: 1
+machine_name: 'vmphp53'
+machine_hostname: 'vmphp53'
+
+# Guest OS timezone
+timezone: "Europe/London"
+
+box_check_update: false
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+  - ~/.ssh/id_rsa
+
+folders:
+  - map: "C:/www"
+    to: "/var/www"
+
+sites:
+  - map: vmphp53
+    to: /var/www/html
+#  - map: dev-example2
+#    to: /var/www/dev-example2/public
+
+#ports:
+#  - send: 3000
+#    to: 3000
+
+#databases:
+#  - db_name1
+#  - db_name2
+
+users:
+  - username: 'vagrant2'
+    fullname: 'vagrant2'
+    email: 'email@address.com'
+    password: 'vagrant'

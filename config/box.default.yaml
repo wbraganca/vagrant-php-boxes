@@ -1,0 +1,6 @@
+---
+vm: 'php71'
+#vm: 'php70'
+#vm: 'php56'
+#vm: 'php53'
+#vm: 'php52'
