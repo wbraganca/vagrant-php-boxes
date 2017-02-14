@@ -12,5 +12,5 @@ service postgresql restart &> /dev/null
 show_message "Restarting nginx..."
 service nginx restart &> /dev/null
 
-show_message "Restarting php7.0-fpm..."
-service php7.0-fpm restart &> /dev/null
+show_message "Restarting php7.1-fpm..."
+service php7.1-fpm restart &> /dev/null
