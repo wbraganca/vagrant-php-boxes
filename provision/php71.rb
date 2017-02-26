@@ -4,7 +4,7 @@ class Php71
       vmphp71.vm.provision "web", type: "shell", inline: 'bash /vagrant/provision/setup-php-7.1.sh'
 
       # Configure All Of The Configured Databases
-      if settings.has_key?("databases")
+      if (settings.has_key?("databases") and settings['databases'].to_a.any?)
           settings["databases"].each do |db|
             vmphp71.vm.provision "shell", run: 'always' do |s|
               s.name = "Creating MySQL Database"
@@ -18,7 +18,7 @@ class Php71
       vmphp71.vm.provision :shell, path: scriptDir + "/scripts/clear-nginx.sh", run: 'always'
 
       # Set Up nginx Virtual Hosts
-      if settings.include? 'sites'
+      if (settings.include? 'sites' and settings["sites"].to_a.any?)
         settings["sites"].each do |site|
           vmphp71.vm.provision "shell", run: 'always' do |s|
             s.name = "Creating virtual hosts to: " + site["map"]
@@ -29,7 +29,7 @@ class Php71
       end
 
       # Create users
-      if settings.has_key?("users")
+      if (settings.has_key?("users") and settings["users"].to_a.any?)
           settings["users"].each do |u|
             vmphp71.vm.provision "shell", run: 'always' do |s|
               if u['github_token'].nil? || u['github_token'].to_s.length != 40

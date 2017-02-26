@@ -83,7 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Standardize Ports Naming Schema
-  if (settings.has_key?("ports"))
+  if (settings.has_key?("ports") and settings['ports'].to_a.any?)
     settings["ports"].each do |port|
       port["guest"] ||= port["to"]
       port["host"] ||= port["send"]
