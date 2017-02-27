@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 source /vagrant/scripts/helpers.sh
 
 # Load settings
-eval $(parse_yaml /vagrant/config/settings-php70.yaml "config_")
+eval $(parse_yaml /vagrant/config/settings-php71.yaml "config_")
 
 
 # PHP CLI
