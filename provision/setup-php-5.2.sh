@@ -92,7 +92,6 @@ apt_package_check_list=(
   libsqlite3-dev
   sqlite3
   libxml2-dev
-  libxslt1-dev
   libcurl4-openssl-dev
   libffi-dev
   python3-dev
