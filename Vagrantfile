@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure Local Variable To Access Scripts From Remote Location
   scriptDir = File.dirname(__FILE__)
 
+  config.vm.box_version = settings["box_version"]
   config.vm.box_check_update = settings["box_check_update"]
 
   # Prevent TTY Errors

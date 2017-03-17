@@ -6,13 +6,13 @@ A custom Vagrant Box for PHP Web Development.
 ```For Windows is recommended that you run the cmd window as Administrator```
 
 1. Install Git
-1. Install [VirtualBox >= 5.0.0](https://www.virtualbox.org/wiki/Downloads)
+1. Install [VirtualBox = 5.0.32](https://www.virtualbox.org/wiki/Downloads)
 1. Install [Vagrant >= 1.8.4](https://www.vagrantup.com/downloads.html)
 1. git clone https://github.com/wbraganca/vagrant-php-boxes vagrant-php-boxes
 1. cd vagrant-php-boxes
 1. install Vagrant plugins:
-    * vagrant plugin install vagrant-vbguest
     * vagrant plugin install vagrant-hostsupdater
+    * vagrant plugin install vagrant-vbguest (Optional)
 
 
 
