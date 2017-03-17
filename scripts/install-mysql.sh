@@ -18,9 +18,11 @@ install_mysql_57() {
 
   apt-get install -y mysql-server > /dev/null 2>&1
 
-  if [ ! -f "./config/mysql-5.7/custom.cnf" ]; then
-    cp ./provision/templates/mysql-5.7/custom.cnf ./config/mysql-5.7/custom.cnf
+  if [ ! -f "/vagrant/config/mysql-5.7/custom.cnf" ]; then
+    cp /vagrant/provision/templates/mysql-5.7/custom.cnf /vagrant/config/mysql-5.7/custom.cnf
   fi
+  cp /vagrant/config/mysql-5.7/custom.cnf /etc/mysql/mysql.conf.d/z-custom.cnf
+  chmod 644 /etc/mysql/mysql.conf.d/z-custom.cnf
 
   # Loads timezone tables
   mysql -uroot -p${config_mysql_root_password} -e "UPDATE mysql.user SET authentication_string=PASSWORD('${config_mysql_root_password}'), plugin='mysql_native_password' WHERE user='root' AND host='localhost';"
