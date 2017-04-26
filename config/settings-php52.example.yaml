@@ -1,7 +1,7 @@
 ---
 provider: virtualbox
 box: 'ubuntu/trusty64'
-box_version: '20170316.3.0'
+box_version: '20170422.0.0'
 
 machine_ip: "192.168.10.52"
 machine_memory: 1024
@@ -24,8 +24,8 @@ folders:
     to: "/var/www"
 
 sites:
-#  - map: dev-example
-#    to: /var/www/dev-example/public
+  - map: vmphp53
+    to: /var/www/html
 #  - map: dev-example2
 #    to: /var/www/dev-example2/public
 

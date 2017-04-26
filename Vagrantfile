@@ -19,9 +19,18 @@ require File.expand_path(File.dirname(__FILE__) + '/provision/' +  box['vm'] +'.
 fileSettings = File.expand_path('config/settings-' + box['vm'] +'.yaml', File.dirname(__FILE__))
 settings = YAML.load_file fileSettings
 
+if (settings.has_key?("keys") and settings['keys'].to_a.any?)
+  settings["keys"].each do |key|
+    keyPath = File.expand_path(key)
+    if (!File.file?(keyPath))
+      puts "Error: ssh key not found in path \"#{keyPath}\". Use the \"ssh-keygen\" command to create a pair of keys."
+      exit
+    end
+  end
+end
 
 # Version
-Vagrant.require_version '>= 1.8.4'
+Vagrant.require_version '>= 1.9.3'
 
 # Configuration
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -106,7 +115,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   unless settings.has_key?("default_ports") && settings["default_ports"] == false
     default_ports.each do |guest, host|
       unless settings["ports"].any? { |mapping| mapping["guest"] == guest }
-        config.vm.network "forwarded_port", guest: guest, host: host, auto_correct: true
+        config.vm.network "forwarded_port", guest: guest, host: host, host_ip: "localhost", auto_correct: true
       end
     end
   end

@@ -1,7 +1,7 @@
 ---
 provider: virtualbox
 box: 'ubuntu/xenial64'
-box_version: '20170316.3.0'
+box_version: '20170424.0.0'
 
 machine_ip: "192.168.10.70"
 machine_memory: 1024

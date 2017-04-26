@@ -1,7 +1,7 @@
 ---
 provider: virtualbox
 box: 'ubuntu/trusty64'
-box_version: '20170316.3.0'
+box_version: '20170422.0.0'
 
 machine_ip: "192.168.10.53"
 machine_memory: 1024
@@ -29,7 +29,7 @@ sites:
 #  - map: dev-example2
 #    to: /var/www/dev-example2/public
 
-#ports:
+ports:
 #  - send: 3000
 #    to: 3000
 
